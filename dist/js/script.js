@@ -14,21 +14,21 @@ let _slideUp = (target, duration = 500) => {
         target.style.paddingBottom = 0;
         target.style.marginTop = 0;
         target.style.marginBottom = 0;
-        window.setTimeout( () => {
-          target.hidden = true;
-          target.style.removeProperty('height');
-          target.style.removeProperty('padding-top');
-          target.style.removeProperty('padding-bottom');
-          target.style.removeProperty('margin-top');
-          target.style.removeProperty('margin-bottom');
-          target.style.removeProperty('overflow');
-          target.style.removeProperty('transition-duration');
-          target.style.removeProperty('transition-property');
-          target.classList.remove('_slide')
+        window.setTimeout(() => {
+            target.hidden = true;
+            target.style.removeProperty('height');
+            target.style.removeProperty('padding-top');
+            target.style.removeProperty('padding-bottom');
+            target.style.removeProperty('margin-top');
+            target.style.removeProperty('margin-bottom');
+            target.style.removeProperty('overflow');
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+            target.classList.remove('_slide')
         }, duration);
     }
 }
-let _slideDown = (target, duration=500) => {
+let _slideDown = (target, duration = 500) => {
     if (!target.classList.contains('_slide')) {
         target.classList.add('_slide')
         if (target.hidden) {
@@ -49,12 +49,12 @@ let _slideDown = (target, duration=500) => {
         target.style.removeProperty('padding-bottom');
         target.style.removeProperty('margin-top');
         target.style.removeProperty('margin-bottom');
-        window.setTimeout( () => {
-          target.style.removeProperty('height');
-          target.style.removeProperty('overflow');
-          target.style.removeProperty('transition-duration');
-          target.style.removeProperty('transition-property');
-          target.classList.remove('_slide')
+        window.setTimeout(() => {
+            target.style.removeProperty('height');
+            target.style.removeProperty('overflow');
+            target.style.removeProperty('transition-duration');
+            target.style.removeProperty('transition-property');
+            target.classList.remove('_slide')
         }, duration);
     }
 }
@@ -90,7 +90,7 @@ if (spollersArray.length > 0) {
             breakpoint.value = paramsArray[0];
             breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : 'max';
             breakpoint.item = item;
-            breakpointsArray.push(breakpoint); 
+            breakpointsArray.push(breakpoint);
         });
 
         let mediaQueries = breakpointsArray.map(function (item) {
@@ -149,7 +149,7 @@ if (spollersArray.length > 0) {
             });
         }
     }
-    
+
     function setSpollerAction(e) {
         const el = e.target;
         if (el.hasAttribute('data-spoller') || el.closest('data-spoller')) {
@@ -184,3 +184,36 @@ window.addEventListener('scroll', function (e) {
         headerElem.classList.remove('_active');
     }
 });
+
+// Scroll to 
+const links = document.querySelectorAll('.scroll-link');
+if (links.length > 0) {
+    for (let i = 0; i < links.length; i++) {
+        const link = links[i];
+        link.addEventListener('click', function (e) {
+            for (let i = 0; i < links.length; i++) {
+                links[i].classList.remove('_active');
+            }
+            e.preventDefault();
+            link.classList.add('_active');
+            const scrollToElem = document.querySelector(link.getAttribute('data-scrollTo'));
+            if (scrollToElem) {
+                if (scrollToElem.offsetHeight > window.innerHeight) {
+                    e.preventDefault();
+                    scrollToElem.scrollIntoView({
+                        block: "start",
+                        inline: "nearest",
+                        behavior: "smooth"
+                    });
+                } else {
+                    e.preventDefault();
+                    scrollToElem.scrollIntoView({
+                        block: "center",
+                        inline: "nearest",
+                        behavior: "smooth"
+                    });
+                }
+            }
+        });
+    }
+}
