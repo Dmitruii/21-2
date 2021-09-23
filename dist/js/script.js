@@ -174,3 +174,13 @@ if (spollersArray.length > 0) {
         }
     }
 }
+
+// Header
+const headerElem = document.documentElement.querySelector('.header');
+window.addEventListener('scroll', function (e) {
+    if (window.scrollY >= 1) {
+        headerElem.classList.add('_active');
+    } else {
+        headerElem.classList.remove('_active');
+    }
+});
