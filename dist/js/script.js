@@ -196,6 +196,7 @@ if (links.length > 0) {
             }
             e.preventDefault();
             link.classList.add('_active');
+            toggleClsasHeaderMenu();
             const scrollToElem = document.querySelector(link.getAttribute('data-scrollTo'));
             if (scrollToElem) {
                 if (scrollToElem.offsetHeight > window.innerHeight) {
@@ -216,4 +217,16 @@ if (links.length > 0) {
             }
         });
     }
+}
+
+// Header menu
+const burgerElem = document.documentElement.querySelector('.menu__burger');
+const menuElem = document.documentElement.querySelector('.header__nav-menu');
+const body = document.documentElement.querySelector('body');
+
+burgerElem.addEventListener('click', toggleClsasHeaderMenu);
+function toggleClsasHeaderMenu () {
+    burgerElem.classList.toggle('_active');
+    menuElem.classList.toggle('_active');
+    body.classList.toggle('lock');
 }
