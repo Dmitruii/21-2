@@ -225,6 +225,8 @@ const menuElem = document.documentElement.querySelector('.header__nav-menu');
 const body = document.documentElement.querySelector('body');
 
 burgerElem.addEventListener('click', toggleClsasHeaderMenu);
+
+// Change header classes 
 function toggleClsasHeaderMenu () {
     burgerElem.classList.toggle('_active');
     menuElem.classList.toggle('_active');
