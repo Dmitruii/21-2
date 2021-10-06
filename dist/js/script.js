@@ -191,12 +191,13 @@ if (links.length > 0) {
     for (let i = 0; i < links.length; i++) {
         const link = links[i];
         link.addEventListener('click', function (e) {
+            toggleClsasHeaderMenu();
+            body.classList.remove('lock');
             for (let i = 0; i < links.length; i++) {
                 links[i].classList.remove('_active');
             }
             e.preventDefault();
             link.classList.add('_active');
-            toggleClsasHeaderMenu();
             const scrollToElem = document.querySelector(link.getAttribute('data-scrollTo'));
             if (scrollToElem) {
                 if (scrollToElem.offsetHeight > window.innerHeight) {
@@ -230,5 +231,5 @@ burgerElem.addEventListener('click', toggleClsasHeaderMenu);
 function toggleClsasHeaderMenu () {
     burgerElem.classList.toggle('_active');
     menuElem.classList.toggle('_active');
-    body.classList.toggle('lock');
+    body.classList.add('lock');
 }
