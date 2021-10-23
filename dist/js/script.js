@@ -219,7 +219,6 @@ if (links.length > 0) {
         });
     }
 }
-
 // Header menu
 const burgerElem = document.documentElement.querySelector('.menu__burger');
 const menuElem = document.documentElement.querySelector('.header__nav-menu');
