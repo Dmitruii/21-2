@@ -230,5 +230,5 @@ burgerElem.addEventListener('click', toggleClsasHeaderMenu);
 function toggleClsasHeaderMenu () {
     burgerElem.classList.toggle('_active');
     menuElem.classList.toggle('_active');
-    body.classList.add('lock');
+    body.classList.add('toggle');
 }
