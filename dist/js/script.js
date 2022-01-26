@@ -252,11 +252,18 @@ const days = [
 ]
 // Data date
 const schedulingTimes = [
-   {from: 9, to: 10, lessonCount: 5},
+   {from: 9, to: 10, lessonCount: 4},
    {from: 10, to: 11, lessonCount: 4},
-   {from: 12, to: 13, lessonCount: 3},
+   {from: 12, to: 13, lessonCount: 4},
    {from: 13, to: 15, lessonCount: 4},
-   {from: 15, to: 16, lessonCount: 3},
+   {from: 15, to: 16, lessonCount: 4},
+]
+const schedulingTimesRemote = [
+   {from: 9, to: 10, lessonCount: 4},
+   {from: 10, to: 11, lessonCount: 4},
+   {from: 11, to: 12, lessonCount: 4},
+   {from: 12, to: 13, lessonCount: 4},
+   {from: 14, to: 15, lessonCount: 4},
 ]
 
 const date = new Date()
@@ -270,10 +277,10 @@ let schedulingTodayTitle
 let nowLessonIndex
 
 function pickerLessons(classAciton) {
-   for (let index = 0; index < schedulingTimes.length; index++) {
-      if (schedulingTimes[index].from <= date.getHours() && date.getHours() <=schedulingTimes[index].to) {
-         console.log(schedulingTimes[index]);
-         if (schedulingTimes[index].lessonCount > index) {
+   for (let index = 0; index < schedulingTimesRemote.length; index++) {
+      if (schedulingTimesRemote[index].from <= date.getHours() && date.getHours() <=schedulingTimesRemote[index].to) {
+         console.log(schedulingTimesRemote[index]);
+         if (schedulingTimesRemote[index].lessonCount > index) {
             nowLessonIndex = index + 1 
          }
          console.log(nowLessonIndex);
